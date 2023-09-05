@@ -2,6 +2,7 @@ package com.example.jpabook.jpashop.domain.item;
 
 import com.example.jpabook.global.BaseEntity;
 import com.example.jpabook.jpashop.domain.Category;
+import com.example.jpabook.jpashop.exception.NotEnoughStockException;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -18,4 +19,19 @@ public class Item extends BaseEntity {
 
     @ManyToMany(mappedBy = "items")
     List<Category> categories = new ArrayList<>();
+
+    public void addStock(int qty) {
+        this.stockQuantity += qty;
+    }
+
+    public void removeStock(int qty) {
+        int currentQty = this.stockQuantity;
+        this.stockQuantity -= qty;
+
+        if (this.stockQuantity < 0) {
+            this.stockQuantity = currentQty;
+            throw new NotEnoughStockException("need more stock");
+        }
+    }
+
 }
