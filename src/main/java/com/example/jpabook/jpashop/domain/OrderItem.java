@@ -35,7 +35,7 @@ public class OrderItem extends BaseEntity {
         this.order = order;
     }
 
-    public OrderItem createOrderItem(Item item, int orderPrice, int count) {
+    public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
         item.removeStock(count);
 
         return OrderItem.builder()

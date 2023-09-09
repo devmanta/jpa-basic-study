@@ -4,9 +4,7 @@ import com.example.jpabook.global.BaseEntity;
 import com.example.jpabook.jpashop.domain.enumtype.DeliveryStatus;
 import com.example.jpabook.jpashop.domain.enumtype.OrderStatus;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -19,6 +17,7 @@ import static jakarta.persistence.FetchType.LAZY;
 @Table(name = "orders")
 @Getter
 @RequiredArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order extends BaseEntity {
 
     @ManyToOne(fetch = LAZY)
