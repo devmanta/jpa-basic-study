@@ -5,6 +5,7 @@ import com.example.jpabook.jpashop.domain.Category;
 import com.example.jpabook.jpashop.exception.NotEnoughStockException;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
 @Entity
 @DiscriminatorColumn(name = "dtype")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) // == default
-@Getter
+@Getter @Setter
 public class Item extends BaseEntity {
 
     private String name;
